@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Wondy × テルジ｜NERIBAY FRIDAY</title>
+<meta name="description" content="2026年10月9日（金）秋葉原ZESTにて Wondy × テルジ。OPEN 19:00 / START 19:30、入場無料＋1ドリンク700円。">
+
+<link rel="canonical" href="https://shunji-miyata.github.io/liveatzest/">
+
+<!-- ============================================
+     OGP / SNSシェア設定
+     og:url と og:image は絶対URL（https://〜）が必須。
+     相対パスだとサムネイルが表示されません。
+     ============================================ -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://shunji-miyata.github.io/liveatzest/">
+<meta property="og:site_name" content="NERIBAY FRIDAY">
+<meta property="og:title" content="Wondy × テルジ｜NERIBAY FRIDAY">
+<meta property="og:description" content="2026年10月9日（金）秋葉原ZEST。OPEN 19:00 / START 19:30、入場無料＋1ドリンク700円。">
+<meta property="og:image" content="https://shunji-miyata.github.io/liveatzest/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Wondy × テルジ 2026年10月9日（金）秋葉原ZEST のライブフライヤー">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-dark:#0a0603;
+  --bg-glow:#3a2414;
+  --accent:#f2b25e;
+  /* 以下2色は現在未使用。見出しや第2アクセント用に確保 */
+  --accent-deep:#c9843c;
+  --cream:#f3efe6;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background:
+    radial-gradient(ellipse 900px 480px at 50% -5%, var(--bg-glow) 0%, transparent 70%),
+    var(--bg-dark);
+  color:#f0f0f0; font-family:'M PLUS Rounded 1c',sans-serif; min-height:100vh;
+}
+
+/* ---------- フライヤー ---------- */
+.flyer-section { max-width:800px; margin:0 auto; padding:48px 24px; border-bottom:1px solid #1a1a1a; }
+.flyer-box {
+  width:100%;
+  border-radius:8px;
+  overflow:hidden;
+  box-shadow:0 0 0 1px rgba(242,178,94,0.15), 0 20px 60px rgba(0,0,0,0.5);
+}
+.flyer-box img { display:block; width:100%; height:auto; }
+
+/* ---------- セクション共通 ---------- */
+.section { max-width:800px; margin:0 auto; padding:48px 24px; border-bottom:1px solid #1a1a1a; }
+.section-label { display:inline-block; color:var(--accent); font-size:17px; font-weight:800; letter-spacing:0.15em; padding-bottom:8px; margin-bottom:24px; border-bottom:2px solid var(--accent); text-transform:uppercase; }
+
+/* ---------- 注意事項 ---------- */
+.notice-list { list-style:none; display:flex; flex-direction:column; gap:14px; }
+.notice-list li {
+  position:relative; padding-left:20px;
+  font-size:15px; line-height:1.9; color:#d8d4cc;
+}
+.notice-list li::before {
+  content:''; position:absolute; left:0; top:0.8em;
+  width:6px; height:6px; border-radius:50%;
+  background:var(--accent);
+}
+/* 未記入の項目。文章を入れたら class="tbd" を消してください */
+.notice-list li.tbd { color:#555; font-style:italic; }
+.notice-list li.tbd::before { background:#333; }
+
+/* ---------- 会場案内 ---------- */
+.venue-photos { display:grid; grid-template-columns:1fr; gap:20px; }
+@media (min-width:600px) {
+  .venue-photos { grid-template-columns:1fr 1fr; }
+}
+.photo-item { display:flex; flex-direction:column; gap:10px; }
+.photo-frame {
+  aspect-ratio:4/3;
+  border:1px dashed #2a2a2a;
+  border-radius:6px;
+  overflow:hidden;
+  background:#0f0a06;
+  display:flex; align-items:center; justify-content:center;
+  color:#3a3a3a; font-size:13px; letter-spacing:0.05em; text-align:center; padding:12px;
+}
+.photo-frame img { display:block; width:100%; height:100%; object-fit:cover; }
+/* 写真を入れると点線枠とプレースホルダ文字が自動で消えます */
+.photo-frame:has(img) { border-color:transparent; padding:0; }
+.photo-frame:has(img) .photo-placeholder { display:none; }
+.photo-caption { font-size:13px; color:#888; letter-spacing:0.05em; line-height:1.7; }
+.photo-caption.tbd { color:#555; font-style:italic; }
+
+/* ---------- 出演者 ---------- */
+.band-block { margin-bottom:28px; }
+.band-block:last-child { margin-bottom:0; }
+.band-name { font-size:13px; letter-spacing:0.2em; color:var(--accent); margin-bottom:8px; text-transform:uppercase; font-weight:800; }
+.band-members { font-size:16px; color:#f0f0f0; line-height:1.9; }
+.member { display:block; }
+
+/* ---------- セットリスト ---------- */
+.setlist-toggle {
+  width:100%; background:none; border:none; border-top:1px solid #222;
+  color:#f0f0f0; font-family:inherit;
+  font-size:15px; padding:18px 0; cursor:pointer;
+  display:flex; align-items:center; gap:12px; text-align:left;
+}
+.setlist-toggle:last-of-type { border-bottom:1px solid #222; }
+.toggle-icon {
+  width:22px; height:22px; border:1px solid #444; border-radius:2px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:16px; color:var(--accent); flex-shrink:0; line-height:1;
+}
+.setlist-content { overflow:hidden; max-height:0; transition:max-height 0.3s ease; }
+.setlist-content.open { max-height:400px; }
+.setlist-ol { list-style:none; padding:0 0 16px 34px; }
+.setlist-ol li { padding:10px 0; border-bottom:1px solid #1a1a1a; font-size:15px; display:flex; align-items:center; gap:12px; }
+.setlist-ol li:last-child { border-bottom:none; }
+.track-num { font-size:12px; color:#444; width:20px; flex-shrink:0; }
+.track-name { color:#555; font-style:italic; }
+
+/* ---------- フッター ---------- */
+.footer { border-top:1px solid #1a1a1a; padding:32px 24px; text-align:center; font-size:12px; color:#333; letter-spacing:0.15em; }
+</style>
+</head>
+<body>
+
+<!-- ========== フライヤー ========== -->
+<section class="flyer-section">
+  <div class="flyer-box">
+    <img src="flyer.jpg"
+         width="1024" height="1024"
+         decoding="async"
+         alt="NERIBAY FRIDAY / Wondy × テルジ 2026年10月9日（金）秋葉原ZEST OPEN 19:00 START 19:30 入場無料＋1ドリンク700円">
+  </div>
+</section>
+
+<!-- ========== 注意事項 ==========
+     各 li の中身を書き換えて、class="tbd" を消してください。
+     項目を増やすときは li の行を複製、減らすときは行ごと削除。
+     ================================ -->
+<section class="section">
+  <p class="section-label">注意事項</p>
+  <ul class="notice-list">
+    <li class="tbd">注意事項1</li>
+    <li class="tbd">注意事項2</li>
+    <li class="tbd">注意事項3</li>
+    <li class="tbd">注意事項4</li>
+  </ul>
+</section>
+
+<!-- ========== 会場案内 ==========
+     写真の入れ方:
+       1. 画像ファイルを index.html と同じ階層に置く
+       2. img の行を囲んでいるコメント記号を外す
+       3. src のファイル名と alt の説明を差し替える
+       4. figcaption の文章を書き換えて class="tbd" を消す
+     点線枠と「写真を追加」の文字は、写真を入れると自動で消えます。
+     枠を増減するときは figure ブロックごと複製／削除してください。
+     ================================ -->
+<section class="section">
+  <p class="section-label">会場案内</p>
+  <div class="venue-photos">
+
+    <figure class="photo-item">
+      <div class="photo-frame">
+        <span class="photo-placeholder">写真を追加</span>
+        <!-- <img src="venue-01.jpg" alt="秋葉原ZEST が入っている今井ビルの外観"> -->
+      </div>
+      <figcaption class="photo-caption tbd">キャプション1</figcaption>
+    </figure>
+
+    <figure class="photo-item">
+      <div class="photo-frame">
+        <span class="photo-placeholder">写真を追加</span>
+        <!-- <img src="venue-02.jpg" alt="ビル1階の入口"> -->
+      </div>
+      <figcaption class="photo-caption tbd">キャプション2</figcaption>
+    </figure>
+
+    <figure class="photo-item">
+      <div class="photo-frame">
+        <span class="photo-placeholder">写真を追加</span>
+        <!-- <img src="venue-03.jpg" alt="地下1階へ下りる階段"> -->
+      </div>
+      <figcaption class="photo-caption tbd">キャプション3</figcaption>
+    </figure>
+
+    <figure class="photo-item">
+      <div class="photo-frame">
+        <span class="photo-placeholder">写真を追加</span>
+        <!-- <img src="venue-04.jpg" alt="ライブフロアの様子"> -->
+      </div>
+      <figcaption class="photo-caption tbd">キャプション4</figcaption>
+    </figure>
+
+  </div>
+</section>
+
+<!-- ========== 出演者 ========== -->
+<section class="section">
+  <p class="section-label">出演者</p>
+  <div class="band-block">
+    <p class="band-name">Wondy</p>
+    <div class="band-members">
+      <span class="member">XX</span>
+      <span class="member">XX</span>
+      <span class="member">XX</span>
+      <span class="member">XX</span>
+      <span class="member">XX</span>
+    </div>
+  </div>
+  <div class="band-block">
+    <p class="band-name">テルジ</p>
+    <div class="band-members">
+      <span class="member">XX</span>
+      <span class="member">XX</span>
+      <span class="member">XX</span>
+      <span class="member">XX</span>
+      <span class="member">XX</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========== セットリスト ========== -->
+<section class="section">
+  <p class="section-label">セットリスト</p>
+  <p style="font-size:14px;color:#666;margin-bottom:16px;">事前に知りたい方はこちらをご覧ください</p>
+
+  <div>
+    <button class="setlist-toggle" onclick="toggle(this)">
+      <span class="toggle-icon">＋</span>
+      <span>Wondy のセットリストを見る</span>
+    </button>
+    <div class="setlist-content">
+      <ol class="setlist-ol">
+        <li><span class="track-num">1</span><span class="track-name">曲名未定</span></li>
+        <li><span class="track-num">2</span><span class="track-name">曲名未定</span></li>
+        <li><span class="track-num">3</span><span class="track-name">曲名未定</span></li>
+        <li><span class="track-num">4</span><span class="track-name">曲名未定</span></li>
+        <li><span class="track-num">5</span><span class="track-name">曲名未定</span></li>
+      </ol>
+    </div>
+  </div>
+
+  <div>
+    <button class="setlist-toggle" onclick="toggle(this)">
+      <span class="toggle-icon">＋</span>
+      <span>テルジのセットリストを見る</span>
+    </button>
+    <div class="setlist-content">
+      <ol class="setlist-ol">
+        <li><span class="track-num">1</span><span class="track-name">曲名未定</span></li>
+        <li><span class="track-num">2</span><span class="track-name">曲名未定</span></li>
+        <li><span class="track-num">3</span><span class="track-name">曲名未定</span></li>
+        <li><span class="track-num">4</span><span class="track-name">曲名未定</span></li>
+        <li><span class="track-num">5</span><span class="track-name">曲名未定</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">© 2026 NERIBAY FRIDAY</footer>
+
+<script>
+function toggle(btn) {
+  const content = btn.nextElementSibling;
+  const icon = btn.querySelector('.toggle-icon');
+  const isOpen = content.classList.toggle('open');
+  icon.textContent = isOpen ? '－' : '＋';
+}
+</script>
+
+</body>
+</html>
