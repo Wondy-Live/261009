@@ -7,7 +7,7 @@
 <title>Wondy × テルジ｜NERIBAY FRIDAY</title>
 <meta name="description" content="2026年10月9日（金）秋葉原ZESTにて Wondy × テルジ。OPEN 19:00 / START 19:30、入場無料＋1ドリンク700円。">
 
-<link rel="canonical" href="https://shunji-miyata.github.io/liveatzest/">
+<link rel="canonical" href="https://wondy-live.github.io/261009/">
 
 <!-- ============================================
      OGP / SNSシェア設定
@@ -15,11 +15,11 @@
      相対パスだとサムネイルが表示されません。
      ============================================ -->
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://shunji-miyata.github.io/liveatzest/">
+<meta property="og:url" content="https://wondy-live.github.io/261009/">
 <meta property="og:site_name" content="NERIBAY FRIDAY">
 <meta property="og:title" content="Wondy × テルジ｜NERIBAY FRIDAY">
 <meta property="og:description" content="2026年10月9日（金）秋葉原ZEST。OPEN 19:00 / START 19:30、入場無料＋1ドリンク700円。">
-<meta property="og:image" content="https://shunji-miyata.github.io/liveatzest/og-image.jpg">
+<meta property="og:image" content="https://wondy-live.github.io/261009/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Wondy × テルジ 2026年10月9日（金）秋葉原ZEST のライブフライヤー">
@@ -57,8 +57,9 @@ body {
 /* ---------- セクション共通 ---------- */
 .section { max-width:800px; margin:0 auto; padding:48px 24px; border-bottom:1px solid #1a1a1a; }
 .section-label { display:inline-block; color:var(--accent); font-size:17px; font-weight:800; letter-spacing:0.15em; padding-bottom:8px; margin-bottom:24px; border-bottom:2px solid var(--accent); text-transform:uppercase; }
+.section-lead { font-size:14px; color:#666; margin-bottom:16px; line-height:1.8; }
 
-/* ---------- 注意事項 ---------- */
+/* ---------- 当日のご案内 ---------- */
 .notice-list { list-style:none; display:flex; flex-direction:column; gap:14px; }
 .notice-list li {
   position:relative; padding-left:20px;
@@ -69,36 +70,34 @@ body {
   width:6px; height:6px; border-radius:50%;
   background:var(--accent);
 }
-/* 未記入の項目。文章を入れたら class="tbd" を消してください */
-.notice-list li.tbd { color:#555; font-style:italic; }
-.notice-list li.tbd::before { background:#333; }
 
-/* ---------- 会場案内 ---------- */
-.venue-photos { display:grid; grid-template-columns:1fr; gap:20px; }
-@media (min-width:600px) {
-  .venue-photos { grid-template-columns:1fr 1fr; }
+/* ---------- 会場 ---------- */
+/* 写真は元の縦横比のまま表示（トリミングなし）。
+   max-width で大きくなりすぎるのを抑えています。 */
+.venue-photos {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+  gap:20px;
 }
-.photo-item { display:flex; flex-direction:column; gap:10px; }
-.photo-frame {
-  aspect-ratio:4/3;
-  border:1px dashed #2a2a2a;
+.photo-item { display:flex; flex-direction:column; gap:10px; max-width:420px; }
+.photo-item img {
+  display:block; width:100%; height:auto;
   border-radius:6px;
-  overflow:hidden;
-  background:#0f0a06;
-  display:flex; align-items:center; justify-content:center;
-  color:#3a3a3a; font-size:13px; letter-spacing:0.05em; text-align:center; padding:12px;
+  box-shadow:0 0 0 1px rgba(242,178,94,0.12), 0 8px 24px rgba(0,0,0,0.4);
 }
-.photo-frame img { display:block; width:100%; height:100%; object-fit:cover; }
-/* 写真を入れると点線枠とプレースホルダ文字が自動で消えます */
-.photo-frame:has(img) { border-color:transparent; padding:0; }
-.photo-frame:has(img) .photo-placeholder { display:none; }
 .photo-caption { font-size:13px; color:#888; letter-spacing:0.05em; line-height:1.7; }
-.photo-caption.tbd { color:#555; font-style:italic; }
+.venue-map { font-size:15px; color:#d8d4cc; line-height:1.9; margin-bottom:22px; }
+.map-link {
+  color:var(--accent); text-decoration:none;
+  border-bottom:1px solid rgba(242,178,94,0.35);
+  padding-bottom:1px;
+}
+.map-link:hover { border-bottom-color:var(--accent); }
 
 /* ---------- 出演者 ---------- */
 .band-block { margin-bottom:28px; }
 .band-block:last-child { margin-bottom:0; }
-.band-name { font-size:13px; letter-spacing:0.2em; color:var(--accent); margin-bottom:8px; text-transform:uppercase; font-weight:800; }
+.band-name { font-size:13px; letter-spacing:0.2em; color:var(--accent); margin-bottom:8px; font-weight:800; }
 .band-members { font-size:16px; color:#f0f0f0; line-height:1.9; }
 .member { display:block; }
 
@@ -115,13 +114,25 @@ body {
   display:flex; align-items:center; justify-content:center;
   font-size:16px; color:var(--accent); flex-shrink:0; line-height:1;
 }
-.setlist-content { overflow:hidden; max-height:0; transition:max-height 0.3s ease; }
-.setlist-content.open { max-height:400px; }
+/* 閉じているときは max-height:0 で完全に隠す。
+   open 時の 1200px は「上限」なので、実際の高さがこれ以下なら余白は出ません。
+   曲数が20曲を超えるようなら数字を増やしてください。 */
+.setlist-content {
+  overflow:hidden;
+  max-height:0;
+  transition:max-height 0.35s ease;
+}
+.setlist-content.open { max-height:1200px; }
 .setlist-ol { list-style:none; padding:0 0 16px 34px; }
-.setlist-ol li { padding:10px 0; border-bottom:1px solid #1a1a1a; font-size:15px; display:flex; align-items:center; gap:12px; }
+.setlist-ol li {
+  padding:10px 0; border-bottom:1px solid #1a1a1a;
+  font-size:15px; display:flex; align-items:baseline; gap:12px;
+}
 .setlist-ol li:last-child { border-bottom:none; }
 .track-num { font-size:12px; color:#444; width:20px; flex-shrink:0; }
-.track-name { color:#555; font-style:italic; }
+.track-info { display:flex; flex-wrap:wrap; align-items:baseline; gap:2px 10px; }
+.track-name { color:#f0f0f0; }
+.track-artist { font-size:13px; color:#888; }
 
 /* ---------- フッター ---------- */
 .footer { border-top:1px solid #1a1a1a; padding:32px 24px; text-align:center; font-size:12px; color:#333; letter-spacing:0.15em; }
@@ -139,65 +150,34 @@ body {
   </div>
 </section>
 
-<!-- ========== 注意事項 ==========
-     各 li の中身を書き換えて、class="tbd" を消してください。
+<!-- ========== 当日のご案内 ==========
      項目を増やすときは li の行を複製、減らすときは行ごと削除。
-     ================================ -->
+     ==================================== -->
 <section class="section">
-  <p class="section-label">注意事項</p>
+  <p class="section-label">当日のご案内</p>
   <ul class="notice-list">
-    <li class="tbd">注意事項1</li>
-    <li class="tbd">注意事項2</li>
-    <li class="tbd">注意事項3</li>
-    <li class="tbd">注意事項4</li>
+    <li>ドリンク代は現金のみです</li>
+    <li>再入場可能です</li>
+    <li>写真・動画撮影は可能ですが、SNS等へのアップはご遠慮ください</li>
+    <li>飲食物の持ち込みはご遠慮ください</li>
   </ul>
 </section>
 
-<!-- ========== 会場案内 ==========
-     写真の入れ方:
-       1. 画像ファイルを index.html と同じ階層に置く
-       2. img の行を囲んでいるコメント記号を外す
-       3. src のファイル名と alt の説明を差し替える
-       4. figcaption の文章を書き換えて class="tbd" を消す
-     点線枠と「写真を追加」の文字は、写真を入れると自動で消えます。
-     枠を増減するときは figure ブロックごと複製／削除してください。
+<!-- ========== 会場 ==========
+     写真を増やすときは figure ブロックごと複製してください。
+     2枚以上になると自動的に2列組みになります。
      ================================ -->
 <section class="section">
-  <p class="section-label">会場案内</p>
+  <p class="section-label">会場</p>
+  <p class="venue-map"><a class="map-link" href="https://www.google.com/maps/place/%E7%A7%8B%E8%91%89%E5%8E%9Fzest/data=!4m2!3m1!1s0x60188c1c311f60eb:0x586769cc5f1a8373?sa=X&amp;ved=1t:242&amp;ictx=111" target="_blank" rel="noopener">秋葉原ZEST（Googleマップ）</a></p>
   <div class="venue-photos">
-
     <figure class="photo-item">
-      <div class="photo-frame">
-        <span class="photo-placeholder">写真を追加</span>
-        <!-- <img src="venue-01.jpg" alt="秋葉原ZEST が入っている今井ビルの外観"> -->
-      </div>
-      <figcaption class="photo-caption tbd">キャプション1</figcaption>
+      <figcaption class="photo-caption">↓この看板が目印です。扉を入って地下1階へ下りるとライブフロアです。</figcaption>
+      <img src="venue.jpg"
+           width="765" height="1020"
+           loading="lazy" decoding="async"
+           alt="秋葉原ZEST の入口。「LIVE &amp; BAR ZEST AKIHABARA」と B1 と書かれた黒い看板が掲げられ、扉の奥に地下へ下りる階段が見える。">
     </figure>
-
-    <figure class="photo-item">
-      <div class="photo-frame">
-        <span class="photo-placeholder">写真を追加</span>
-        <!-- <img src="venue-02.jpg" alt="ビル1階の入口"> -->
-      </div>
-      <figcaption class="photo-caption tbd">キャプション2</figcaption>
-    </figure>
-
-    <figure class="photo-item">
-      <div class="photo-frame">
-        <span class="photo-placeholder">写真を追加</span>
-        <!-- <img src="venue-03.jpg" alt="地下1階へ下りる階段"> -->
-      </div>
-      <figcaption class="photo-caption tbd">キャプション3</figcaption>
-    </figure>
-
-    <figure class="photo-item">
-      <div class="photo-frame">
-        <span class="photo-placeholder">写真を追加</span>
-        <!-- <img src="venue-04.jpg" alt="ライブフロアの様子"> -->
-      </div>
-      <figcaption class="photo-caption tbd">キャプション4</figcaption>
-    </figure>
-
   </div>
 </section>
 
@@ -226,10 +206,13 @@ body {
   </div>
 </section>
 
-<!-- ========== セットリスト ========== -->
+<!-- ========== セットリスト ==========
+     曲を追加するときは li の行を複製し、track-num の数字を振り直してください。
+     アーティスト名が不要な曲は track-artist の span を削除すれば消えます。
+     ==================================== -->
 <section class="section">
   <p class="section-label">セットリスト</p>
-  <p style="font-size:14px;color:#666;margin-bottom:16px;">事前に知りたい方はこちらをご覧ください</p>
+  <p class="section-lead">事前に知りたい方はこちらをご覧ください</p>
 
   <div>
     <button class="setlist-toggle" onclick="toggle(this)">
@@ -238,11 +221,34 @@ body {
     </button>
     <div class="setlist-content">
       <ol class="setlist-ol">
-        <li><span class="track-num">1</span><span class="track-name">曲名未定</span></li>
-        <li><span class="track-num">2</span><span class="track-name">曲名未定</span></li>
-        <li><span class="track-num">3</span><span class="track-name">曲名未定</span></li>
-        <li><span class="track-num">4</span><span class="track-name">曲名未定</span></li>
-        <li><span class="track-num">5</span><span class="track-name">曲名未定</span></li>
+        <li>
+          <span class="track-num">1</span>
+          <span class="track-info"><span class="track-name">CHAINSAW BLOOD</span><span class="track-artist">Vaundy</span></span>
+        </li>
+        <li>
+          <span class="track-num">2</span>
+          <span class="track-info"><span class="track-name">裸の勇者</span><span class="track-artist">Vaundy</span></span>
+        </li>
+        <li>
+          <span class="track-num">3</span>
+          <span class="track-info"><span class="track-name">不可幸力</span><span class="track-artist">Vaundy</span></span>
+        </li>
+        <li>
+          <span class="track-num">4</span>
+          <span class="track-info"><span class="track-name">インフェルノ</span><span class="track-artist">Mrs. GREEN APPLE</span></span>
+        </li>
+        <li>
+          <span class="track-num">5</span>
+          <span class="track-info"><span class="track-name">平成ペイン</span><span class="track-artist">go!go!vanillas</span></span>
+        </li>
+        <li>
+          <span class="track-num">6</span>
+          <span class="track-info"><span class="track-name">若者のすべて</span><span class="track-artist">フジファブリック</span></span>
+        </li>
+        <li>
+          <span class="track-num">7</span>
+          <span class="track-info"><span class="track-name">栞</span><span class="track-artist">クリープハイプ</span></span>
+        </li>
       </ol>
     </div>
   </div>
@@ -254,11 +260,34 @@ body {
     </button>
     <div class="setlist-content">
       <ol class="setlist-ol">
-        <li><span class="track-num">1</span><span class="track-name">曲名未定</span></li>
-        <li><span class="track-num">2</span><span class="track-name">曲名未定</span></li>
-        <li><span class="track-num">3</span><span class="track-name">曲名未定</span></li>
-        <li><span class="track-num">4</span><span class="track-name">曲名未定</span></li>
-        <li><span class="track-num">5</span><span class="track-name">曲名未定</span></li>
+        <li>
+          <span class="track-num">1</span>
+          <span class="track-info"><span class="track-name">怪獣の花唄</span><span class="track-artist">Vaundy</span></span>
+        </li>
+        <li>
+          <span class="track-num">2</span>
+          <span class="track-info"><span class="track-name">ピースサイン</span><span class="track-artist">米津玄師</span></span>
+        </li>
+        <li>
+          <span class="track-num">3</span>
+          <span class="track-info"><span class="track-name">クロノスタシス</span><span class="track-artist">きのこ帝国</span></span>
+        </li>
+        <li>
+          <span class="track-num">4</span>
+          <span class="track-info"><span class="track-name">ただ君に晴れ</span><span class="track-artist">ヨルシカ</span></span>
+        </li>
+        <li>
+          <span class="track-num">5</span>
+          <span class="track-info"><span class="track-name">ホログラム</span><span class="track-artist">NICO Touches the Walls</span></span>
+        </li>
+        <li>
+          <span class="track-num">6</span>
+          <span class="track-info"><span class="track-name">拝啓、少年よ</span><span class="track-artist">Hump Back</span></span>
+        </li>
+        <li>
+          <span class="track-num">7</span>
+          <span class="track-info"><span class="track-name">君はロックを聴かない</span><span class="track-artist">あいみょん</span></span>
+        </li>
       </ol>
     </div>
   </div>
