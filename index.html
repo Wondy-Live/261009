@@ -37,6 +37,10 @@
   --cream:#f3efe6;
 }
 * { margin:0; padding:0; box-sizing:border-box; }
+/* ▼ ページ全体の文字サイズはここで調整します。
+   100% = 標準(16px相当) / 93.75% = 15px相当 / 87.5% = 14px相当
+   数字を下げると全ての文字が同じ比率で小さくなります。 */
+html { font-size:93.75%; }
 body {
   background:
     radial-gradient(ellipse 900px 480px at 50% -5%, var(--bg-glow) 0%, transparent 70%),
@@ -56,14 +60,14 @@ body {
 
 /* ---------- セクション共通 ---------- */
 .section { max-width:800px; margin:0 auto; padding:48px 24px; border-bottom:1px solid #1a1a1a; }
-.section-label { display:inline-block; color:var(--accent); font-size:17px; font-weight:800; letter-spacing:0.15em; padding-bottom:8px; margin-bottom:24px; border-bottom:2px solid var(--accent); text-transform:uppercase; }
-.section-lead { font-size:14px; color:#666; margin-bottom:16px; line-height:1.8; }
+.section-label { display:inline-block; color:var(--accent); font-size:1.0625rem; font-weight:800; letter-spacing:0.15em; padding-bottom:8px; margin-bottom:24px; border-bottom:2px solid var(--accent); text-transform:uppercase; }
+.section-lead { font-size:0.875rem; color:#666; margin-bottom:16px; line-height:1.8; }
 
 /* ---------- 当日のご案内 ---------- */
 .notice-list { list-style:none; display:flex; flex-direction:column; gap:14px; }
 .notice-list li {
   position:relative; padding-left:20px;
-  font-size:15px; line-height:1.9; color:#d8d4cc;
+  font-size:0.9375rem; line-height:1.9; color:#d8d4cc;
 }
 .notice-list li::before {
   content:''; position:absolute; left:0; top:0.8em;
@@ -85,8 +89,8 @@ body {
   border-radius:6px;
   box-shadow:0 0 0 1px rgba(242,178,94,0.12), 0 8px 24px rgba(0,0,0,0.4);
 }
-.photo-caption { font-size:13px; color:#888; letter-spacing:0.05em; line-height:1.7; }
-.venue-map { font-size:15px; color:#d8d4cc; line-height:1.9; margin-bottom:22px; }
+.photo-caption { font-size:0.8125rem; color:#888; letter-spacing:0.05em; line-height:1.7; }
+.venue-map { font-size:0.9375rem; color:#d8d4cc; line-height:1.9; margin-bottom:22px; }
 .map-link {
   color:var(--accent); text-decoration:none;
   border-bottom:1px solid rgba(242,178,94,0.35);
@@ -97,22 +101,23 @@ body {
 /* ---------- 出演者 ---------- */
 .band-block { margin-bottom:28px; }
 .band-block:last-child { margin-bottom:0; }
-.band-name { font-size:13px; letter-spacing:0.2em; color:var(--accent); margin-bottom:8px; font-weight:800; }
-.band-members { font-size:16px; color:#f0f0f0; line-height:1.9; }
+.band-name { font-size:0.8125rem; letter-spacing:0.2em; color:var(--accent); margin-bottom:8px; font-weight:800; }
+.band-members { font-size:1rem; color:#f0f0f0; line-height:1.9; }
 .member { display:block; }
+.member-part { display:inline-block; width:34px; color:#888; font-size:0.8125rem; }
 
 /* ---------- セットリスト ---------- */
 .setlist-toggle {
   width:100%; background:none; border:none; border-top:1px solid #222;
   color:#f0f0f0; font-family:inherit;
-  font-size:15px; padding:18px 0; cursor:pointer;
+  font-size:0.9375rem; padding:18px 0; cursor:pointer;
   display:flex; align-items:center; gap:12px; text-align:left;
 }
 .setlist-toggle:last-of-type { border-bottom:1px solid #222; }
 .toggle-icon {
   width:22px; height:22px; border:1px solid #444; border-radius:2px;
   display:flex; align-items:center; justify-content:center;
-  font-size:16px; color:var(--accent); flex-shrink:0; line-height:1;
+  font-size:1rem; color:var(--accent); flex-shrink:0; line-height:1;
 }
 /* 閉じているときは max-height:0 で完全に隠す。
    open 時の 1200px は「上限」なので、実際の高さがこれ以下なら余白は出ません。
@@ -126,16 +131,16 @@ body {
 .setlist-ol { list-style:none; padding:0 0 16px 34px; }
 .setlist-ol li {
   padding:10px 0; border-bottom:1px solid #1a1a1a;
-  font-size:15px; display:flex; align-items:baseline; gap:12px;
+  font-size:0.9375rem; display:flex; align-items:baseline; gap:12px;
 }
 .setlist-ol li:last-child { border-bottom:none; }
-.track-num { font-size:12px; color:#444; width:20px; flex-shrink:0; }
+.track-num { font-size:0.75rem; color:#444; width:20px; flex-shrink:0; }
 .track-info { display:flex; flex-wrap:wrap; align-items:baseline; gap:2px 10px; }
 .track-name { color:#f0f0f0; }
-.track-artist { font-size:13px; color:#888; }
+.track-artist { font-size:0.8125rem; color:#888; }
 
 /* ---------- フッター ---------- */
-.footer { border-top:1px solid #1a1a1a; padding:32px 24px; text-align:center; font-size:12px; color:#333; letter-spacing:0.15em; }
+.footer { border-top:1px solid #1a1a1a; padding:32px 24px; text-align:center; font-size:0.75rem; color:#333; letter-spacing:0.15em; }
 </style>
 </head>
 <body>
@@ -158,7 +163,7 @@ body {
   <p class="section-label">当日のご案内</p>
   <ul class="notice-list">
     <li>ドリンク代（700円）は現金でのみお支払い可能です</li>
-    <li>途中入場・退場、および再入場は可能です</li>
+    <li>途中入場・退場は自由、再入場も可能です</li>
     <li>飲食物の持ち込みはご遠慮ください</li>
   </ul>
 </section>
@@ -187,21 +192,21 @@ body {
   <div class="band-block">
     <p class="band-name">Wondy</p>
     <div class="band-members">
-      <span class="member">XX</span>
-      <span class="member">XX</span>
-      <span class="member">XX</span>
-      <span class="member">XX</span>
-      <span class="member">XX</span>
+      <span class="member"><span class="member-part">Vo.</span>岩淵</span>
+      <span class="member"><span class="member-part">Gt.</span>加藤</span>
+      <span class="member"><span class="member-part">Gt.</span>佐久間</span>
+      <span class="member"><span class="member-part">Ba.</span>小林</span>
+      <span class="member"><span class="member-part">Dr.</span>宮田</span>
     </div>
   </div>
   <div class="band-block">
     <p class="band-name">theluji</p>
     <div class="band-members">
-      <span class="member">XX</span>
-      <span class="member">XX</span>
-      <span class="member">XX</span>
-      <span class="member">XX</span>
-      <span class="member">XX</span>
+      <span class="member"><span class="member-part">Vo.</span>小林</span>
+      <span class="member"><span class="member-part">Gt.</span>二瓶</span>
+      <span class="member"><span class="member-part">Gt.</span>馬場</span>
+      <span class="member"><span class="member-part">Ba.</span>寺尾</span>
+      <span class="member"><span class="member-part">Dr.</span>林</span>
     </div>
   </div>
 </section>
