@@ -75,6 +75,13 @@ body {
   background:var(--accent);
 }
 
+/* 来場時間の目安 */
+.arrival { display:flex; flex-direction:column; gap:7px; margin-top:10px; }
+.arrival-row { display:flex; flex-wrap:wrap; align-items:baseline; gap:2px 10px; font-size:0.875rem; }
+.arrival-band { color:var(--accent); font-weight:700; min-width:4.6em; }
+.arrival-note { color:#888; font-size:0.8125rem; }
+.arrival-free { display:block; margin-top:9px; font-size:0.8125rem; color:#888; line-height:1.8; }
+
 /* ---------- 会場 ---------- */
 /* 写真は元の縦横比のまま表示（トリミングなし）。
    max-width で大きくなりすぎるのを抑えています。 */
@@ -162,8 +169,14 @@ body {
 <section class="section">
   <p class="section-label">当日のご案内</p>
   <ul class="notice-list">
+    <li>お目当てのバンドがある方は、次の時間帯にお越しください
+      <span class="arrival">
+        <span class="arrival-row"><span class="arrival-band">Wondy</span>19:00〜19:30<span class="arrival-note">（出演 19:30〜20:15）</span></span>
+        <span class="arrival-row"><span class="arrival-band">theluji</span>20:15〜20:30<span class="arrival-note">（出演 20:30〜21:15）</span></span>
+      </span>
+      <span class="arrival-free">※あくまで目安です。途中入場・退場、再入場は自由なので、この時間を過ぎてもお気軽にお越しください</span>
+    </li>
     <li>ドリンク代（700円）は現金でのみお支払い可能です</li>
-    <li>途中入場・退場は自由、再入場も可能です</li>
     <li>飲食物の持ち込みはご遠慮ください</li>
   </ul>
 </section>
