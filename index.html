@@ -32,9 +32,8 @@
   --bg-dark:#0a0603;
   --bg-glow:#3a2414;
   --accent:#f2b25e;
-  /* 以下2色は現在未使用。見出しや第2アクセント用に確保 */
-  --accent-deep:#c9843c;
-  --cream:#f3efe6;
+  --accent-deep:#c9843c;   /* ボタンのホバー用 */
+  --cream:#f3efe6;         /* 現在未使用。見出し用に確保 */
 }
 * { margin:0; padding:0; box-sizing:border-box; }
 /* ▼ ページ全体の文字サイズはここで調整します。
@@ -57,6 +56,20 @@ body {
   box-shadow:0 0 0 1px rgba(242,178,94,0.15), 0 20px 60px rgba(0,0,0,0.5);
 }
 .flyer-box img { display:block; width:100%; height:auto; }
+
+/* ---------- アンケート ---------- */
+.survey { max-width:800px; margin:0 auto; padding:36px 24px; border-bottom:1px solid #1a1a1a; }
+.survey-lead { font-size:0.9375rem; color:#d8d4cc; line-height:1.9; margin-bottom:6px; }
+.survey-btn {
+  display:block; max-width:340px;
+  background:var(--accent); color:var(--bg-dark);
+  text-align:center; text-decoration:none;
+  font-weight:800; font-size:0.9375rem;
+  padding:15px 24px; border-radius:6px;
+  transition:background 0.2s ease;
+}
+.survey-btn:hover { background:var(--accent-deep); }
+.survey-note { font-size:0.8125rem; color:#888; line-height:1.8; margin-bottom:20px; }
 
 /* ---------- セクション共通 ---------- */
 .section { max-width:800px; margin:0 auto; padding:48px 24px; border-bottom:1px solid #1a1a1a; }
@@ -160,6 +173,15 @@ body {
          decoding="async"
          alt="NERIBAY FRIDAY / Wondy × theluji 2026年10月9日（金）秋葉原ZEST OPEN 19:00 START 19:30 入場無料＋1ドリンク700円">
   </div>
+</section>
+
+<!-- ========== アンケート ==========
+     人数確認用のGoogleフォームへのリンク。
+     ================================ -->
+<section class="survey">
+  <p class="survey-lead">人数確認のため、ご参加予定を教えていただけると助かります</p>
+  <p class="survey-note">回答は任意です。回答がなくても当日は問題なくご参加いただけます</p>
+  <a class="survey-btn" href="https://forms.gle/ohQ2FHExyn9y33A28" target="_blank" rel="noopener">参加予定を回答する</a>
 </section>
 
 <!-- ========== 当日のご案内 ==========
